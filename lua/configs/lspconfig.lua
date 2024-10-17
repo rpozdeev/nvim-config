@@ -5,19 +5,25 @@ local capabilities = require("nvchad.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- Отключение виртуального текста для предупреждений
--- vim.diagnostic.config {
---   virtual_text = false, -- Отключить виртуальный текст диагностики
---   -- virtual_text = {
---   --   prefix = '●', -- Префикс для виртуального текста диагностики
---   -- },
---   signs = true, -- Включить отображение знаков
---   update_in_insert = true, -- Обновлять диагностику в режиме INSERT
---   underline = true, -- Подчеркивать проблемные участки кода
--- }
+vim.diagnostic.config {
+  virtual_text = false, -- Отключить виртуальный текст диагностики
+  -- virtual_text = {
+  --   prefix = '●', -- Префикс для виртуального текста диагностики
+  -- },
+  signs = true, -- Включить отображение знаков
+  update_in_insert = true, -- Обновлять диагностику в режиме INSERT
+  underline = true, -- Подчеркивать проблемные участки кода
+}
+-- Настройка значков диагностики
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "ℹ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 -- список серверов для конфигурации
 lspconfig.servers = {
   "lua_ls",
+  "pyright",
 }
 
 -- список серверов с конфигурацией по умолчанию
@@ -31,6 +37,20 @@ for _, lsp in ipairs(default_servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "off", -- Disable type checking diagnostics
+      },
+    },
+  },
+}
 
 lspconfig.lua_ls.setup {
   on_attach = on_attach,

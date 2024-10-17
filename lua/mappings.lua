@@ -31,8 +31,14 @@ map("n", "<C-Down>", "<cmd>resize -2<cr>")
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>")
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
 
--- Buffer lines
-map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>")
-map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>")
-map("n", "<leader>bo", "<cmd>BufferLineCloseOther<cr>")
-map("n", "<leader>bx", "<cmd>BufferLinePickClose<cr>")
+map("n", "<S-l>", function()
+  require("nvchad.tabufline").next()
+end, { desc = "buffer goto next" })
+
+map("n", "<S-h>", function()
+  require("nvchad.tabufline").prev()
+end, { desc = "buffer goto prev" })
+
+map("n", "<leader>f", "", { desc = "+telescope/todo" })
+map("n", "<leader>t", "", { desc = "+test" })
+map("n", "<leader>w", "", { desc = "+workspace" })
