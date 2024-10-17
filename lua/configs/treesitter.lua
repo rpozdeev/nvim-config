@@ -23,6 +23,7 @@ local options = {
     "yaml",
     "terraform",
     "hcl",
+    "helm",
   },
 
   highlight = {

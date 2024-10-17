@@ -227,4 +227,10 @@ return {
       require("telescope").load_extension "terraform"
     end,
   },
+  {
+    "b0o/SchemaStore.nvim",
+    lazy = true,
+    version = false, -- last release is way too old
+  },
+  { "towolf/vim-helm", ft = "helm" },
 }
