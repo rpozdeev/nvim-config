@@ -16,6 +16,7 @@ end
 -- Build a list of linters to install minus the ignored list.
 local all_linters = {
   "tflint",
+  "hadolint",
 }
 for _, v in pairs(lint.linters_by_ft) do
   for _, linter in ipairs(v) do

@@ -5,6 +5,7 @@ lint.linters_by_ft = {
   python = { "mypy", "ruff" },
   terraform = { "tflint" },
   tf = { "tflint" },
+  dockerfile = { "hadolint" },
 }
 
 lint.linters.luacheck.args = {

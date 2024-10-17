@@ -24,6 +24,7 @@ local options = {
     "terraform",
     "hcl",
     "helm",
+    "dockerfile",
   },
 
   highlight = {

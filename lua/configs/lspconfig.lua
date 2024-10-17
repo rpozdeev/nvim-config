@@ -35,11 +35,15 @@ lspconfig.servers = {
   "terraformls",
   "yamlls",
   "helm_ls",
+  "dockerls",
+  "docker_compose_language_service",
 }
 
 -- список серверов с конфигурацией по умолчанию
 local default_servers = {
   "terraformls",
+  "dockerls",
+  "docker_compose_language_service",
 }
 
 -- lsp с дефолтным конфигом
@@ -106,6 +110,12 @@ lspconfig.helm_ls.setup {
     },
   },
 }
+
+-- lspconfig.docker_compose_language_service.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "docker-compose.yaml", "docker-compose.yml" },
+-- }
 
 lspconfig.lua_ls.setup {
   on_attach = on_attach,
