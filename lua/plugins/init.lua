@@ -216,4 +216,15 @@ return {
     ft = "python",
     keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv", ft = "python" } },
   },
+  {
+    "cappyzawa/telescope-terraform.nvim",
+    ft = "terraform",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("telescope").load_extension "terraform"
+    end,
+  },
 }

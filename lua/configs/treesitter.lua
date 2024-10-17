@@ -21,6 +21,8 @@ local options = {
     "vim",
     "vimdoc",
     "yaml",
+    "terraform",
+    "hcl",
   },
 
   highlight = {

@@ -20,14 +20,25 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSig
 vim.fn.sign_define("DiagnosticSignInfo", { text = "ℹ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
+-- Всплывающее окно диагностики
+vim.keymap.set("n", "<leader>do", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "diagnosti float" })
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+  end,
+})
+
 -- список серверов для конфигурации
 lspconfig.servers = {
   "lua_ls",
   "pyright",
+  "terraformls",
 }
 
 -- список серверов с конфигурацией по умолчанию
-local default_servers = {}
+local default_servers = {
+  "terraformls",
+}
 
 -- lsp с дефолтным конфигом
 for _, lsp in ipairs(default_servers) do
