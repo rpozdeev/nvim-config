@@ -18,6 +18,7 @@ local all_linters = {
   "tflint",
   "hadolint",
   "ansible-lint",
+  "markdownlint-cli2",
 }
 for _, v in pairs(lint.linters_by_ft) do
   for _, linter in ipairs(v) do

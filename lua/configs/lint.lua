@@ -6,6 +6,7 @@ lint.linters_by_ft = {
   terraform = { "tflint" },
   tf = { "tflint" },
   dockerfile = { "hadolint" },
+  markdown = { "markdownlint-cli2" },
 }
 
 lint.linters.luacheck.args = {

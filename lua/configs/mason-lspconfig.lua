@@ -24,6 +24,7 @@ local all_servers = {
   "docker_compose_language_service",
   "ansiblels",
   "jsonls",
+  "marksman",
 }
 for _, s in ipairs(lspconfig.servers) do
   if not table_contains(ignore_install, s) then

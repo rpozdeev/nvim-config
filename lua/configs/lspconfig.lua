@@ -39,6 +39,7 @@ lspconfig.servers = {
   "docker_compose_language_service",
   "ansiblels",
   "jsonls",
+  "marksman",
 }
 
 -- список серверов с конфигурацией по умолчанию
@@ -47,6 +48,7 @@ local default_servers = {
   "dockerls",
   "docker_compose_language_service",
   "ansiblels",
+  "marksman",
 }
 
 -- lsp с дефолтным конфигом
