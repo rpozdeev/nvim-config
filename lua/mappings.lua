@@ -16,10 +16,7 @@ map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- Save file
-map("i", "<C-s>", "<cmd>w<cr><esc>")
-map("x", "<C-s>", "<cmd>w<cr><esc>")
-map("n", "<C-s>", "<cmd>w<cr><esc>")
-map("s", "<C-s>", "<cmd>w<cr><esc>")
+map({ "i", "n", "x", "s" }, "<C-s>", "<cmd>w<cr><esc>")
 
 -- Better indenting
 map("v", "<", "<gv")
