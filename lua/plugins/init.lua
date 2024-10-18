@@ -139,20 +139,21 @@ return {
     },
   },
   {
+    "jcdickinson/codeium.nvim",
+    event = "VimEnter",
+    config = function()
+      require("codeium").setup {}
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
+    dependencies = {
+      "jcdickinson/codeium.nvim",
+    },
     config = function(_, opts)
       table.insert(opts.sources, { name = "codeium" })
       require("cmp").setup(opts)
     end,
-
-    dependencies = {
-      {
-        "jcdickinson/codeium.nvim",
-        config = function()
-          require("codeium").setup {}
-        end,
-      },
-    },
   },
   {
     "nvim-neotest/neotest",
@@ -181,6 +182,7 @@ return {
   },
   {
     "stevearc/dressing.nvim",
+    event = "VimEnter",
     opts = {},
     config = function()
       require("dressing").setup()
@@ -233,4 +235,30 @@ return {
     version = false, -- last release is way too old
   },
   { "towolf/vim-helm", ft = "helm" },
+  {
+    "kylechui/nvim-surround",
+    event = { "BufReadPre", "BufNewFile" },
+    tag = "v2.3.0", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    vscode = true,
+    ---@type Flash.Config
+    opts = {},
+  -- stylua: ignore
+  keys = {
+    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  },
+  },
+  { "sindrets/diffview.nvim", event = "VeryLazy" },
 }
