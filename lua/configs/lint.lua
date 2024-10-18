@@ -7,6 +7,7 @@ lint.linters_by_ft = {
   tf = { "tflint" },
   dockerfile = { "hadolint" },
   markdown = { "markdownlint-cli2" },
+  sql = { "sqlfluff" },
 }
 
 lint.linters.luacheck.args = {

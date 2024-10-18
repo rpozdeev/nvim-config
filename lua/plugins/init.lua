@@ -139,20 +139,22 @@ return {
     },
   },
   {
-    "jcdickinson/codeium.nvim",
-    event = "VimEnter",
-    config = function()
-      require("codeium").setup {}
+    "petertriho/cmp-git",
+    event = "VeryLazy",
+    dependencies = { "hrsh7th/nvim-cmp" },
+    opts = {
+      -- options go here
+    },
+    init = function()
+      table.insert(require("cmp").get_config().sources, { name = "git" })
     end,
   },
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "jcdickinson/codeium.nvim",
-    },
-    config = function(_, opts)
-      table.insert(opts.sources, { name = "codeium" })
-      require("cmp").setup(opts)
+    "jcdickinson/codeium.nvim",
+    event = "VimEnter",
+    init = function()
+      table.insert(require("cmp").get_config().sources, { name = "" })
+      require("codeium").setup {}
     end,
   },
   {

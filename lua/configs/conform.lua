@@ -8,6 +8,7 @@ local options = {
     ["terraform-vars"] = { "terraform_fmt" },
     ["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
     ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+    sql = { "sqlfluff" },
   },
 
   formatters = {
@@ -41,6 +42,9 @@ local options = {
         end, vim.diagnostic.get(ctx.buf))
         return #diag > 0
       end,
+    },
+    sqlfluff = {
+      args = { "format", "--dialect=ansi", "-" },
     },
   },
   format_on_save = {

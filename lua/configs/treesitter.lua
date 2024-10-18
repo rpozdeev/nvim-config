@@ -26,6 +26,12 @@ local options = {
     "hcl",
     "helm",
     "dockerfile",
+    "git_config",
+    "gitcommit",
+    "git_rebase",
+    "gitignore",
+    "gitattributes",
+    "sql",
   },
 
   highlight = {
