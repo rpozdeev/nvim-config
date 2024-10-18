@@ -38,6 +38,7 @@ lspconfig.servers = {
   "dockerls",
   "docker_compose_language_service",
   "ansiblels",
+  "jsonls",
 }
 
 -- список серверов с конфигурацией по умолчанию
@@ -118,6 +119,21 @@ lspconfig.helm_ls.setup {
 --   capabilities = capabilities,
 --   filetypes = { "docker-compose.yaml", "docker-compose.yml" },
 -- }
+
+lspconfig.jsonls.setup {
+  on_new_config = function(new_config)
+    new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+    vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+  end,
+  settings = {
+    json = {
+      format = {
+        enable = true,
+      },
+      validate = { enable = true },
+    },
+  },
+}
 
 lspconfig.lua_ls.setup {
   on_attach = on_attach,

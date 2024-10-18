@@ -14,7 +14,17 @@ local function table_contains(table, value)
 end
 
 -- Build a list of lsp servers to install minus the ignored list.
-local all_servers = {}
+local all_servers = {
+  "lua_ls",
+  "pyright",
+  "terraformls",
+  "yamlls",
+  "helm_ls",
+  "dockerls",
+  "docker_compose_language_service",
+  "ansiblels",
+  "jsonls",
+}
 for _, s in ipairs(lspconfig.servers) do
   if not table_contains(ignore_install, s) then
     table.insert(all_servers, s)

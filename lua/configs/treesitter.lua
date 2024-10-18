@@ -13,6 +13,7 @@ local options = {
     "lua",
     "luadoc",
     -- "make",
+    "json5",
     "markdown",
     "printf",
     "python",
