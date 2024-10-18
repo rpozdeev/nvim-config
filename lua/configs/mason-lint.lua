@@ -17,6 +17,7 @@ end
 local all_linters = {
   "tflint",
   "hadolint",
+  "ansible-lint",
 }
 for _, v in pairs(lint.linters_by_ft) do
   for _, linter in ipairs(v) do

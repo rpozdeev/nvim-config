@@ -219,6 +219,20 @@ return {
     keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv", ft = "python" } },
   },
   {
+    "mfussenegger/nvim-ansible",
+    ft = {},
+    keys = {
+      {
+        "<leader>ta",
+        function()
+          require("ansible").run()
+        end,
+        desc = "Ansible Run Playbook/Role",
+        silent = true,
+      },
+    },
+  },
+  {
     "cappyzawa/telescope-terraform.nvim",
     ft = "terraform",
     requires = {

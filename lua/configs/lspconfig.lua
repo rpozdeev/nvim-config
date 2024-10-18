@@ -37,6 +37,7 @@ lspconfig.servers = {
   "helm_ls",
   "dockerls",
   "docker_compose_language_service",
+  "ansiblels",
 }
 
 -- список серверов с конфигурацией по умолчанию
@@ -44,6 +45,7 @@ local default_servers = {
   "terraformls",
   "dockerls",
   "docker_compose_language_service",
+  "ansiblels",
 }
 
 -- lsp с дефолтным конфигом
