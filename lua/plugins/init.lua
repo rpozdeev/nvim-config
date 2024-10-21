@@ -123,6 +123,7 @@ return {
   },
   {
     "christoomey/vim-tmux-navigator",
+    event = "VimEnter",
     cmd = {
       "TmuxNavigateLeft",
       "TmuxNavigateDown",
@@ -130,13 +131,13 @@ return {
       "TmuxNavigateRight",
       "TmuxNavigatePrevious",
     },
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
+    -- keys = {
+    --   { "<C-h>", "<cmd>TmuxNavigateLeft<cr>" },
+    --   { "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+    --   { "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+    --   { "<C-l>", "<cmd>TmuxNavigateRight<cr>" },
+    --   { "<C-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    -- },
   },
   {
     "petertriho/cmp-git",
@@ -339,35 +340,39 @@ return {
     "tpope/vim-dadbod",
     cmd = "DB",
   },
-  {
-    "kristijanhusak/vim-dadbod-completion",
-    dependencies = "vim-dadbod",
-    ft = sql_ft,
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = sql_ft,
-        callback = function()
-          local cmp = require "cmp"
-
-          -- global sources
-          ---@param source cmp.SourceConfig
-          local sources = vim.tbl_map(function(source)
-            return { name = source.name }
-          end, cmp.get_config().sources)
-
-          -- add vim-dadbod-completion source
-          table.insert(sources, { name = "vim-dadbod-completion" })
-
-          -- update sources for the current buffer
-          cmp.setup.buffer { sources = sources }
-        end,
-      })
-    end,
-  },
+  -- {
+  --   "kristijanhusak/vim-dadbod-completion",
+  --   dependencies = "vim-dadbod",
+  --   ft = sql_ft,
+  --   init = function()
+  --     vim.api.nvim_create_autocmd("FileType", {
+  --       pattern = sql_ft,
+  --       callback = function()
+  --         local cmp = require "cmp"
+  --
+  --         -- global sources
+  --         ---@param source cmp.SourceConfig
+  --         local sources = vim.tbl_map(function(source)
+  --           return { name = source.name }
+  --         end, cmp.get_config().sources)
+  --
+  --         -- add vim-dadbod-completion source
+  --         table.insert(sources, { name = "vim-dadbod-completion" })
+  --
+  --         -- update sources for the current buffer
+  --         cmp.setup.buffer { sources = sources }
+  --       end,
+  --     })
+  --   end,
+  -- },
   {
     "kristijanhusak/vim-dadbod-ui",
     cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
-    dependencies = "vim-dadbod",
+    dependencies = {
+      "vim-dadbod",
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+    },
+
     keys = {
       { "<leader>dD", "<cmd>DBUIToggle<CR>", desc = "Toggle DBUI" },
     },

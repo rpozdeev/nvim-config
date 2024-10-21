@@ -44,7 +44,6 @@ lspconfig.servers = {
 
 -- список серверов с конфигурацией по умолчанию
 local default_servers = {
-  "terraformls",
   "dockerls",
   "docker_compose_language_service",
   "ansiblels",
@@ -59,6 +58,13 @@ for _, lsp in ipairs(default_servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.terraformls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  filetypes = { "terraform", "tf", "hcl" },
+}
 
 lspconfig.pyright.setup {
   on_attach = on_attach,

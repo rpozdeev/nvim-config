@@ -39,3 +39,9 @@ end, { desc = "buffer goto prev" })
 map("n", "<leader>f", "", { desc = "+telescope/todo" })
 map("n", "<leader>t", "", { desc = "+test" })
 map("n", "<leader>w", "", { desc = "+workspace" })
+
+-- tmux навигатор
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+map("n", "<C-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
+map("n", "<C-k>", "<cmd><C-U>TmuxNavigateUp<cr>")
