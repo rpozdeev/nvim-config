@@ -1,8 +1,6 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-
+local nvlsp = require "nvchad.configs.lspconfig"
 local lspconfig = require "lspconfig"
+nvlsp.defaults()
 
 -- Отключение виртуального текста для предупреждений
 vim.diagnostic.config {
@@ -28,48 +26,35 @@ vim.api.nvim_create_autocmd("CursorHold", {
   end,
 })
 
--- список серверов для конфигурации
-lspconfig.servers = {
-  "lua_ls",
-  "pyright",
-  "terraformls",
-  "yamlls",
-  "helm_ls",
-  "dockerls",
-  "docker_compose_language_service",
-  "ansiblels",
-  "jsonls",
-  "marksman",
-}
-
 -- список серверов с конфигурацией по умолчанию
-local default_servers = {
+local servers = {
   "dockerls",
   "docker_compose_language_service",
   "ansiblels",
   "marksman",
-}
+  }
 
--- lsp с дефолтным конфигом
-for _, lsp in ipairs(default_servers) do
+-- lsps with default config
+for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
   }
 end
 
+
 lspconfig.terraformls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
   filetypes = { "terraform", "tf", "hcl" },
 }
 
 lspconfig.pyright.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
 
   settings = {
     python = {
@@ -81,6 +66,8 @@ lspconfig.pyright.setup {
 }
 
 lspconfig.yamlls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
   capabilities = {
     textDocument = {
       foldingRange = {
@@ -113,6 +100,9 @@ lspconfig.yamlls.setup {
 }
 
 lspconfig.helm_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
   settings = {
     ["helm-ls"] = {
       yamlls = {
@@ -129,6 +119,9 @@ lspconfig.helm_ls.setup {
 -- }
 
 lspconfig.jsonls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
   on_new_config = function(new_config)
     new_config.settings.json.schemas = new_config.settings.json.schemas or {}
     vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
@@ -144,9 +137,9 @@ lspconfig.jsonls.setup {
 }
 
 lspconfig.lua_ls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
 
   settings = {
     Lua = {
