@@ -32,7 +32,7 @@ local servers = {
   "docker_compose_language_service",
   "ansiblels",
   "marksman",
-  }
+}
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -42,7 +42,6 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
-
 
 lspconfig.terraformls.setup {
   on_attach = nvlsp.on_attach,
@@ -133,6 +132,27 @@ lspconfig.jsonls.setup {
       },
       validate = { enable = true },
     },
+  },
+}
+
+lspconfig.sqls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+
+  settings = {
+    -- sqls = {
+    --   connections = {
+    --     {
+    --       driver = "postgresql",
+    --       dataSourceName = "host=localhost port=5432 user=your_user dbname=your_db sslmode=disable",
+    --     },
+    --     {
+    --       driver = "mysql",
+    --       dataSourceName = "your_user:your_password@tcp(127.0.0.1:3306)/your_db",
+    --     },
+    --   },
+    -- },
   },
 }
 

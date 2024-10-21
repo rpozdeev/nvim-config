@@ -28,12 +28,21 @@ return {
   --     })
   --   end,
   -- },
+  {},
+  {
+    "kristijanhusak/vim-dadbod-completion",
+    ft = { "sql", "mysql", "plsql" },
+    lazy = true,
+    init = function()
+      table.insert(require("cmp").get_config().sources, { name = "vim-dadbod-completion" })
+    end,
+  },
   {
     "kristijanhusak/vim-dadbod-ui",
     cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
     dependencies = {
       "vim-dadbod",
-      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+      { "kristijanhusak/vim-dadbod-completion" },
     },
 
     keys = {

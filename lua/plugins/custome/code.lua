@@ -41,11 +41,12 @@ return {
       table.insert(require("cmp").get_config().sources, { name = "git" })
     end,
   },
+
   {
     "jcdickinson/codeium.nvim",
     event = "VimEnter",
     init = function()
-      table.insert(require("cmp").get_config().sources, { name = "" })
+      table.insert(require("cmp").get_config().sources, { name = "codeium" })
       require("codeium").setup {}
     end,
   },
