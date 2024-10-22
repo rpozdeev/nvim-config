@@ -1,6 +1,12 @@
 # Конфигурация nvim на базе NvChad v3.0
 
-LSP (dap, test, format, lint): - python - ansible - terraform - helm - docker - markdown
+LSP (dap, test, format, lint): 
+- python
+- ansible
+- terraform
+- helm
+- docker
+- markdown
 
 ## Требования
 
@@ -27,3 +33,7 @@ brew install im-select
 vim.opt.spell = true
 vim.opt.spelllang = { "ru", "en" }
 ```
+## Установка приложений
+Для установки приложений следует воспользоваться командой `MasonInstallAll`. Скрипт найдет все упоминания lsp, lint, format и установит их.
+
+DAP следует установить вручную `Mason Install debugpy`
