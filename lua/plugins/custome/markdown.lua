@@ -33,13 +33,16 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     opts = {
       code = {
-        sign = false,
+        -- sign = false,
         width = "block",
         right_pad = 1,
       },
       heading = {
-        sign = false,
         icons = {},
+      },
+      bullet = {
+        enabled = true,
+        right_pad = 1,
       },
     },
   },

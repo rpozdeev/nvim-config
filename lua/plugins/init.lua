@@ -9,6 +9,7 @@ local config_files = {
   "neotest",
   "python",
   "sql",
+  "obsidian",
 }
 
 for _, file in ipairs(config_files) do

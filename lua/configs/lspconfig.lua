@@ -85,6 +85,7 @@ lspconfig.yamlls.setup {
       keyOrdering = false,
       format = {
         enable = true,
+        printWidth = 120,
       },
       validate = true,
       schemaStore = {

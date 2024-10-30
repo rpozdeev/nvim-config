@@ -19,3 +19,5 @@ vim.opt.foldtext = ""
 vim.opt.foldnestmax = 3
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+
+vim.opt.conceallevel = 1
