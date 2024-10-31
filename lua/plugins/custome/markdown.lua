@@ -43,6 +43,7 @@ return {
       bullet = {
         enabled = true,
         right_pad = 1,
+        icons = { "•", "◦", "✦", "✧" },
       },
     },
   },
